@@ -1,0 +1,1803 @@
+/* ==========================================================================
+   🌙 SHRI KRISHNA JANMASHTAMI — CINEMATIC DIGITAL EXPERIENCE
+   MIDNIGHT VRINDAVAN: Luxury Spiritual Dark Theme, Glassmorphism & Micro-Animations
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Poppins:wght@300;400;500;600;700&family=Rozha+One&family=Yatra+One&display=swap');
+
+:root {
+  /* Celestial Color Palette */
+  --bg-deep-night: #030712;
+  --bg-midnight-indigo: #081226;
+  --bg-royal-blue: #0b1d3a;
+  --bg-yamuna-dark: #020c1b;
+  
+  --gold-primary: #ffd166;
+  --gold-vibrant: #ffb703;
+  --gold-deep: #fb8500;
+  --gold-radiance: #ffe8a1;
+  --gold-shadow: rgba(255, 183, 3, 0.35);
+
+  --peacock-teal: #06d6a0;
+  --peacock-cyan: #72efdd;
+  --peacock-azure: #118ab2;
+  --peacock-deep: #03045e;
+
+  --moonlight-silver: #e2eafc;
+  --moonlight-glow: rgba(226, 234, 252, 0.45);
+
+  --lotus-pink: #ff758f;
+  --lotus-crimson: #e63946;
+
+  --glass-bg: rgba(11, 29, 58, 0.65);
+  --glass-border: rgba(255, 209, 102, 0.28);
+  --glass-highlight: rgba(255, 255, 255, 0.12);
+
+  /* Typography */
+  --font-heading: 'Rozha One', 'Yatra One', serif;
+  --font-royal: 'Cinzel Decorative', serif;
+  --font-body: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Transitions */
+  --ease-divine: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-swing: cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
+
+/* ==========================================================================
+   GLOBAL RESET & HIDE DEFAULT MOUSE CURSOR ON DESKTOP
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Hide normal system mouse cursor so only Peacock feather cursor shows */
+html,
+body,
+body * {
+  cursor: none !important;
+}
+
+img {
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--bg-deep-night);
+  color: var(--moonlight-silver);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  min-height: 100vh;
+  line-height: 1.6;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   COUNTDOWN LOCKED STATE (NO SCROLLING ALLOWED BEFORE MIDNIGHT)
+   ========================================================================== */
+html.countdown-locked,
+body.countdown-locked {
+  overflow: hidden !important;
+  height: 100vh !important;
+  max-height: 100vh !important;
+  touch-action: none !important;
+  user-select: none;
+}
+
+.countdown-locked .experience-after-midnight {
+  display: none !important;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   CANVAS & ATMOSPHERIC LAYERS
+   ========================================================================== */
+#bgCanvas, #fgCanvas, #lightningCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+}
+
+#bgCanvas {
+  z-index: 1;
+}
+
+#fgCanvas {
+  z-index: 20;
+}
+
+#lightningCanvas {
+  z-index: 990;
+}
+
+/* Realistic Golden-White Divine Bloom & Exposure Overlay */
+#cinematicFlashOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle at 50% 40%, rgba(255, 255, 255, 1) 0%, rgba(255, 243, 176, 0.96) 25%, rgba(255, 183, 3, 0.85) 55%, rgba(6, 214, 160, 0.4) 80%, transparent 100%);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 999;
+}
+
+#cinematicFlashOverlay.divine-bloom-active {
+  animation: divineBloomBurst 1.2s cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
+}
+
+@keyframes divineBloomBurst {
+  0% {
+    opacity: 0;
+    transform: scale(0.95);
+    filter: brightness(1);
+  }
+  15% {
+    opacity: 1;
+    transform: scale(1.05);
+    filter: brightness(2.2) contrast(1.15);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.15);
+    filter: brightness(1);
+  }
+}
+
+/* Content Wrapper Screen Shake during Thunder */
+.experience-wrapper.screen-shake {
+  animation: shakeKeyframe 0.5s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes shakeKeyframe {
+  10%, 90% { transform: translate3d(-3px, 0, 0); }
+  20%, 80% { transform: translate3d(4px, 2px, 0); }
+  30%, 50%, 70% { transform: translate3d(-5px, -2px, 0); }
+  40%, 60% { transform: translate3d(5px, 2px, 0); }
+}
+
+#cinematicFlashOverlay.cinematic-darkness-active {
+  opacity: 0.95;
+  background: #000208;
+  transition: opacity 0.4s ease;
+}
+
+/* ==========================================================================
+   CUSTOM PEACOCK FEATHER CURSOR (ALWAYS ON TOP • ZERO-LAG PRECISION)
+   ========================================================================== */
+#peacockCursor {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  pointer-events: none !important;
+  z-index: 2147483647 !important; /* Highest possible 32-bit z-index in CSS */
+  opacity: 0;
+  transform: translate3d(-100px, -100px, 0);
+  transition: opacity 0.2s ease;
+  will-change: transform;
+}
+
+#peacockCursor * {
+  pointer-events: none !important;
+}
+
+#peacockCursor.cursor-visible {
+  opacity: 1;
+}
+
+/* Radiant Pointer Dot at exact hotspot (0, 0) */
+.cursor-pointer-dot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background: var(--gold-primary);
+  border: 1.5px solid #ffffff;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 8px #ffffff, 0 0 16px var(--gold-vibrant);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Feather body flowing naturally from the pointer tip */
+.cursor-feather-body {
+  position: absolute;
+  top: -4px;
+  left: -2px;
+  width: 44px;
+  height: 72px;
+  transform-origin: 4px 6px;
+  transform: rotate(25deg);
+  transition: filter 0.2s ease;
+  filter: drop-shadow(0 0 8px rgba(6, 214, 160, 0.85)) drop-shadow(0 0 14px rgba(255, 209, 102, 0.7));
+}
+
+.cursor-feather-body img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Hover over clickable buttons/links/interactive items */
+#peacockCursor.cursor-hover-active .cursor-pointer-dot {
+  transform: translate(-50%, -50%) scale(1.6);
+  background: var(--gold-radiance);
+  box-shadow: 0 0 12px #ffffff, 0 0 25px var(--gold-vibrant), 0 0 35px var(--peacock-cyan);
+}
+
+#peacockCursor.cursor-hover-active .cursor-feather-body {
+  filter: drop-shadow(0 0 16px rgba(255, 209, 102, 0.95)) drop-shadow(0 0 25px rgba(114, 239, 221, 0.85)) brightness(1.25);
+}
+
+/* Click Ripple effect */
+.cursor-click-ripple {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--gold-radiance);
+  box-shadow: 0 0 16px var(--gold-vibrant);
+  pointer-events: none !important;
+  z-index: 2147483646 !important;
+  transform: translate(-50%, -50%);
+  animation: cursorRippleAnim 0.45s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+}
+
+@keyframes cursorRippleAnim {
+  0% { width: 10px; height: 10px; opacity: 1; border-width: 3px; }
+  100% { width: 60px; height: 60px; opacity: 0; border-width: 1px; }
+}
+
+/* ==========================================================================
+   APP WRAPPER & CINEMATIC SECTIONS (GRAND WIDESCREEN EXPERIENCE)
+   ========================================================================== */
+.experience-wrapper {
+  position: relative;
+  z-index: 10;
+  width: 95%;
+  max-width: 1560px;
+  margin: 0 auto;
+  padding: 24px 2vw 140px;
+}
+
+.cinematic-section {
+  min-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 45px 8px;
+  margin-bottom: 45px;
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
+
+/* Glassmorphic Container Panels */
+.glass-panel {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7), inset 0 1px 1px var(--glass-highlight), 0 0 35px var(--gold-shadow);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 28px;
+  padding: 42px 38px;
+  width: 100%;
+  max-width: 1440px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-panel:hover {
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8), 0 0 50px rgba(255, 209, 102, 0.5);
+}
+
+.birth-section-highlight {
+  border-color: var(--gold-primary) !important;
+  box-shadow: 0 0 60px rgba(255, 183, 3, 0.5), inset 0 0 30px rgba(255, 209, 102, 0.2) !important;
+}
+
+/* Ornate Headers */
+.ornate-title-group {
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.sub-divine-tag {
+  font-family: var(--font-royal);
+  font-size: 0.95rem;
+  color: var(--peacock-cyan);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 8px;
+  text-shadow: 0 0 10px rgba(114, 239, 221, 0.6);
+}
+
+.main-divine-title {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  color: #ffffff;
+  text-shadow: 0 0 20px var(--gold-primary), 0 4px 12px rgba(0, 0, 0, 0.9);
+  line-height: 1.25;
+  margin-bottom: 10px;
+}
+
+.title-ornament-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.title-ornament-divider::before,
+.title-ornament-divider::after {
+  content: '';
+  height: 2px;
+  width: 60px;
+  background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
+}
+
+/* ==========================================================================
+   BUTTONS & CONTROLS
+   ========================================================================== */
+.btn-divine {
+  background: linear-gradient(135deg, #ffd166 0%, #ffb703 50%, #fb8500 100%);
+  color: #030712;
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 14px 28px;
+  border-radius: 50px;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 6px 20px var(--gold-shadow), inset 0 1px 1px rgba(255, 255, 255, 0.8);
+  transition: all 0.25s var(--ease-divine);
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.btn-divine:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 10px 30px rgba(255, 183, 3, 0.6), 0 0 20px rgba(255, 209, 102, 0.8);
+}
+
+.btn-divine:active {
+  transform: translateY(1px) scale(0.98);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--moonlight-silver);
+  border: 1px solid var(--glass-border);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: 30px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  backdrop-filter: blur(8px);
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 209, 102, 0.15);
+  border-color: var(--gold-primary);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.btn-active-gold {
+  background: rgba(255, 209, 102, 0.25) !important;
+  border-color: var(--gold-primary) !important;
+  color: var(--gold-primary) !important;
+}
+
+.btn-pulse-gold {
+  animation: pulseGoldGlow 1s ease-in-out infinite alternate;
+}
+
+@keyframes pulseGoldGlow {
+  0% { transform: scale(1); box-shadow: 0 0 10px var(--gold-primary); }
+  100% { transform: scale(1.05); box-shadow: 0 0 30px var(--gold-vibrant); }
+}
+
+/* ==========================================================================
+   1. OPENING SCREEN & COUNTDOWN
+   ========================================================================== */
+#openingScreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle at 50% 40%, #08142b 0%, #030712 70%, #000208 100%);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 24px;
+  transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1), transform 1.2s ease;
+}
+
+#openingScreen.fade-out-opening {
+  opacity: 0;
+  transform: scale(1.08);
+  pointer-events: none;
+}
+
+.opening-moon-halo {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 3.5px solid var(--gold-primary);
+  box-shadow: 0 0 35px rgba(255, 209, 102, 0.85), 0 0 75px rgba(6, 214, 160, 0.5), inset 0 0 20px rgba(0, 0, 0, 0.6);
+  margin-bottom: 24px;
+  overflow: hidden;
+  position: relative;
+  background: radial-gradient(circle, #0e1e38, #030712);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: moonPulse 4s ease-in-out infinite alternate;
+}
+
+.opening-bal-gopal-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  display: block;
+  transform: scale(1.04);
+  transition: transform 0.5s ease;
+}
+
+@keyframes moonPulse {
+  0% {
+    transform: scale(0.97);
+    box-shadow: 0 0 30px rgba(255, 209, 102, 0.7), 0 0 60px rgba(6, 214, 160, 0.4);
+  }
+  100% {
+    transform: scale(1.04);
+    box-shadow: 0 0 50px rgba(255, 215, 0, 0.95), 0 0 90px rgba(114, 239, 221, 0.65);
+  }
+}
+
+.opening-title {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  color: var(--gold-radiance);
+  text-shadow: 0 0 25px var(--gold-vibrant);
+  margin-bottom: 12px;
+}
+
+.opening-subtitle {
+  font-size: 1.25rem;
+  color: var(--moonlight-silver);
+  font-weight: 300;
+  letter-spacing: 2px;
+  margin-bottom: 36px;
+  opacity: 0.85;
+}
+
+.countdown-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin: 32px 0 24px;
+}
+
+.count-unit {
+  background: rgba(4, 15, 34, 0.85);
+  border: 2px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 20px 24px;
+  min-width: 130px;
+  box-shadow: inset 0 0 24px rgba(0, 0, 0, 0.8), 0 0 25px var(--gold-shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.count-num {
+  font-family: var(--font-royal);
+  font-size: 3.8rem;
+  font-weight: 900;
+  color: var(--gold-primary);
+  text-shadow: 0 0 25px var(--gold-vibrant);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.count-label {
+  font-size: 0.9rem;
+  color: var(--peacock-cyan);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-weight: 500;
+}
+
+.count-colon {
+  font-family: var(--font-royal);
+  font-size: 3.2rem;
+  color: var(--gold-primary);
+  text-shadow: 0 0 18px var(--gold-vibrant);
+  animation: colonBlink 1s ease-in-out infinite;
+}
+
+@keyframes colonBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.countdown-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 26px;
+}
+
+.demo-badge {
+  display: inline-block;
+  background: rgba(255, 183, 3, 0.2);
+  border: 1px solid var(--gold-vibrant);
+  color: var(--gold-radiance);
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.95rem;
+  margin-top: 10px;
+}
+
+.demo-badge.pulse {
+  animation: badgePulse 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes badgePulse {
+  0% { transform: scale(1); box-shadow: 0 0 10px var(--gold-vibrant); }
+  100% { transform: scale(1.04); box-shadow: 0 0 25px var(--gold-primary); }
+}
+
+.tension-pulse {
+  animation: tensionSky 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes tensionSky {
+  0% { border-color: rgba(255, 209, 102, 0.3); }
+  100% { border-color: rgba(255, 183, 3, 0.9); box-shadow: 0 0 45px rgba(255, 183, 3, 0.6); }
+}
+
+/* ==========================================================================
+   2. KRISHNA BIRTH, TEMPLE BELL & CRADLE (JHULA)
+   ========================================================================== */
+.birth-banner-box {
+  background: rgba(255, 183, 3, 0.12);
+  border: 1px solid var(--gold-primary);
+  border-radius: 16px;
+  padding: 14px 24px;
+  margin: 16px auto 24px;
+  max-width: 900px;
+  font-size: 1.25rem;
+  color: var(--gold-radiance);
+  text-shadow: 0 0 12px var(--gold-primary);
+}
+
+/* 2-Column Responsive Grid */
+.birth-celebration-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  justify-items: center;
+  width: 100%;
+  margin: 20px 0 10px;
+}
+
+@media (max-width: 880px) {
+  .birth-celebration-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+/* Primary Temple Bell in Birth Section */
+.temple-bell-stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px 0;
+  width: 100%;
+}
+
+.bell-hanging-chain {
+  width: 6px;
+  height: 65px;
+  background: repeating-linear-gradient(0deg, #d4a373, #faedcd 6px, #8d6e63 12px);
+  border-radius: 3px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+}
+
+.temple-bell-interactive {
+  position: relative;
+  width: 140px;
+  height: 160px;
+  transform-origin: top center;
+  transition: transform 0.1s ease-out;
+}
+
+.temple-bell-interactive.bell-swing {
+  animation: bellSwing 2.2s var(--ease-swing) forwards;
+}
+
+@keyframes bellSwing {
+  0% { transform: rotate(0deg); }
+  15% { transform: rotate(24deg); }
+  30% { transform: rotate(-20deg); }
+  45% { transform: rotate(15deg); }
+  60% { transform: rotate(-9deg); }
+  75% { transform: rotate(5deg); }
+  90% { transform: rotate(-2deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.bell-clapper {
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  width: 18px;
+  height: 32px;
+  background: radial-gradient(circle, #ffd166, #99582a);
+  border-radius: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+}
+
+.bell-clapper.clapper-swing {
+  animation: clapperSwing 2s ease-in-out forwards;
+}
+
+@keyframes clapperSwing {
+  0% { transform: translateX(-50%) rotate(0deg); }
+  20% { transform: translateX(-50%) rotate(-30deg); }
+  40% { transform: translateX(-50%) rotate(25deg); }
+  60% { transform: translateX(-50%) rotate(-15deg); }
+  80% { transform: translateX(-50%) rotate(6deg); }
+  100% { transform: translateX(-50%) rotate(0deg); }
+}
+
+.bell-shockwave {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid var(--gold-vibrant);
+  box-shadow: 0 0 20px var(--gold-primary);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  animation: shockwaveExpand 1.2s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+}
+
+@keyframes shockwaveExpand {
+  0% { width: 30px; height: 30px; opacity: 1; border-width: 4px; }
+  100% { width: 280px; height: 280px; opacity: 0; border-width: 1px; }
+}
+
+/* Interactive Cradle / Jhula */
+.jhula-stage-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px 0;
+  position: relative;
+  width: 100%;
+}
+
+.jhula-hanging-frame {
+  position: relative;
+  width: 270px;
+  height: 270px;
+  transform-origin: top center;
+  transition: all 0.3s ease-out;
+}
+
+.jhula-hanging-frame.jhula-swing {
+  animation: jhulaNaturalSwing 3.2s ease-in-out forwards;
+}
+
+@keyframes jhulaNaturalSwing {
+  0% { transform: rotate(0deg); }
+  18% { transform: rotate(18deg); }
+  38% { transform: rotate(-16deg); }
+  58% { transform: rotate(10deg); }
+  78% { transform: rotate(-5deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.jhula-ropes {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.jhula-cradle {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.85), 0 0 35px var(--gold-shadow);
+  border: 3px solid var(--gold-primary);
+  transition: box-shadow 0.4s ease;
+}
+
+.jhula-cradle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform-origin: center bottom;
+  animation: babyGentleBreathe 4s ease-in-out infinite alternate;
+}
+
+@keyframes babyGentleBreathe {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.03); }
+}
+
+.cradle-glow-highlight .jhula-cradle {
+  box-shadow: 0 0 50px rgba(255, 209, 102, 0.9), 0 0 80px rgba(6, 214, 160, 0.7);
+}
+
+/* ==========================================================================
+   DEVOTIONAL GATE LOCK (1 Bell Ring + 1 Jhula Swing Compulsory)
+   ========================================================================== */
+.darshan-gate-lock-card {
+  margin-top: 32px;
+  padding: 24px 28px;
+  background: radial-gradient(circle at 50% 0%, rgba(255, 183, 3, 0.12) 0%, rgba(3, 12, 30, 0.95) 100%);
+  border: 1.5px solid var(--gold-primary);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 25px rgba(255, 183, 3, 0.25);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.darshan-gate-lock-card.gate-unlocked {
+  border-color: var(--peacock-teal);
+  box-shadow: 0 0 40px rgba(6, 214, 160, 0.4), inset 0 0 20px rgba(6, 214, 160, 0.1);
+}
+
+.gate-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.gate-lock-icon {
+  font-size: 1.8rem;
+  animation: lockIconPulse 2s ease-in-out infinite;
+}
+
+@keyframes lockIconPulse {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 4px var(--gold-primary)); }
+  50% { transform: scale(1.15); filter: drop-shadow(0 0 12px var(--gold-vibrant)); }
+}
+
+.gate-card-title {
+  font-family: var(--font-heading);
+  font-size: 1.55rem;
+  color: var(--gold-radiance);
+  margin: 0;
+  text-shadow: 0 0 15px var(--gold-vibrant);
+}
+
+.gate-card-desc {
+  font-size: 1.05rem;
+  color: var(--moonlight-silver);
+  max-width: 780px;
+  margin: 0 auto 20px;
+  line-height: 1.6;
+}
+
+.gate-tasks-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  max-width: 800px;
+  margin: 0 auto 16px;
+}
+
+@media (max-width: 680px) {
+  .gate-tasks-container {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}
+
+.gate-task-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(3, 12, 30, 0.85);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 14px 18px;
+  text-align: left;
+  transition: all 0.35s ease;
+}
+
+.gate-task-card.task-pending {
+  border-color: rgba(255, 209, 102, 0.3);
+}
+
+.gate-task-card.task-completed {
+  border-color: var(--peacock-teal);
+  background: rgba(6, 214, 160, 0.12);
+  box-shadow: 0 0 20px rgba(6, 214, 160, 0.35);
+}
+
+.task-icon-wrap {
+  font-size: 1.8rem;
+  min-width: 40px;
+  text-align: center;
+}
+
+.task-info {
+  flex: 1;
+}
+
+.task-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--gold-radiance);
+  margin-bottom: 2px;
+}
+
+.task-subtitle {
+  font-size: 0.8rem;
+  color: var(--peacock-cyan);
+}
+
+.task-status-badge {
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+.task-status-badge.badge-pending {
+  background: rgba(239, 71, 111, 0.18);
+  border: 1px solid #ef476f;
+  color: #ff8fa3;
+}
+
+.task-status-badge.badge-completed {
+  background: rgba(6, 214, 160, 0.25);
+  border: 1px solid var(--peacock-teal);
+  color: #ffffff;
+  box-shadow: 0 0 10px var(--peacock-teal);
+}
+
+.darshan-unlocked-notice {
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px dashed rgba(255, 209, 102, 0.35);
+  animation: fadeIn 0.6s ease-out;
+}
+
+.unlocked-msg {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  color: var(--gold-radiance);
+  text-shadow: 0 0 15px var(--gold-vibrant);
+}
+
+/* Subsequent Sections Lock State */
+.subsequent-darshan-sections {
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.subsequent-darshan-sections.darshan-locked {
+  display: none !important;
+}
+
+.subsequent-darshan-sections.darshan-unlocked-reveal {
+  display: block !important;
+  animation: darshanReveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes darshanReveal {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Quick Nav Dock Item Locked */
+.nav-dock-item.nav-item-locked {
+  opacity: 0.55;
+  filter: grayscale(0.5);
+  position: relative;
+}
+
+.nav-dock-item.nav-item-locked:hover {
+  opacity: 0.75;
+}
+
+/* ==========================================================================
+   3. KRISHNA SITTING ANIMATED SPEAKING EXPERIENCE
+   ========================================================================== */
+.krishna-speaking-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 28px;
+}
+
+.krishna-sitting-stage {
+  position: relative;
+  width: 100%;
+  max-width: 880px;
+  height: 480px;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 45px var(--gold-shadow);
+  border: 2px solid var(--gold-primary);
+  background: #020713;
+}
+
+.krishna-sitting-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  filter: contrast(1.04) brightness(1.02);
+  transition: transform 0.8s ease, filter 0.8s ease;
+}
+
+/* Subtle Divine Aura & Breathing on Sitting Krishna */
+.visual-speaking-mode .krishna-sitting-bg {
+  animation: krishnaBreathing 5s ease-in-out infinite alternate;
+  filter: contrast(1.06) brightness(1.06);
+}
+
+@keyframes krishnaBreathing {
+  0% { transform: scale(1) translateY(0); }
+  100% { transform: scale(1.02) translateY(-3px); }
+}
+
+/* Hindi Sacred Message Display */
+.krishna-message-box {
+  background: rgba(3, 12, 30, 0.88);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 28px 34px;
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  max-height: 380px;
+  overflow-y: auto;
+  text-align: left;
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.8);
+}
+
+.hindi-msg-line {
+  font-size: 1.12rem;
+  line-height: 1.8;
+  margin-bottom: 14px;
+  color: var(--moonlight-silver);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  opacity: 0.7;
+  transition: all 0.35s ease;
+}
+
+.hindi-msg-line.latest-line {
+  color: #ffffff;
+  opacity: 1;
+  font-weight: 500;
+  text-shadow: 0 0 15px var(--gold-primary);
+  transform: translateX(6px);
+}
+
+.hindi-msg-line.sacred-highlight {
+  color: var(--gold-radiance);
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 700;
+  text-shadow: 0 0 20px var(--gold-vibrant);
+}
+
+.line-bullet {
+  font-size: 1.1rem;
+}
+
+.message-action-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+/* ==========================================================================
+   4. DAHI-HANDI MINI GAME
+   ========================================================================== */
+.dahi-game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+.dahi-stats-bar {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 16px;
+  background: rgba(3, 12, 30, 0.88);
+  border: 1px solid var(--gold-primary);
+  border-radius: 16px;
+  padding: 12px 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(255, 209, 102, 0.12);
+}
+
+.dahi-stat-item {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--moonlight-silver);
+}
+
+.dahi-stat-item b {
+  color: var(--gold-radiance);
+  font-family: var(--font-royal);
+  font-size: 1.25rem;
+  margin-left: 4px;
+}
+
+#dahiHandiCanvas {
+  width: 100%;
+  max-width: 500px;
+  height: 480px;
+  border-radius: 24px;
+  border: 2px solid var(--gold-primary);
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.9), 0 0 35px var(--gold-shadow);
+  touch-action: none;
+  background: #030c1d;
+  cursor: pointer;
+  display: block;
+}
+
+.dahi-controls {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+/* ==========================================================================
+   5. 108 NAME JAP MALA (WIDESCREEN 2-COLUMN GRID)
+   ========================================================================== */
+.jap-stage-grid {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 48px;
+  align-items: center;
+  width: 100%;
+  text-align: left;
+}
+
+@media (max-width: 920px) {
+  .jap-stage-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    text-align: center;
+  }
+}
+
+.jap-mandala-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.jap-info-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.jap-mandala-wrapper {
+  position: relative;
+  width: 340px;
+  height: 340px;
+  margin: 10px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.jap-svg-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.jap-circle-bg {
+  fill: none;
+  stroke: rgba(255, 209, 102, 0.2);
+  stroke-width: 6;
+}
+
+.jap-circle-progress {
+  fill: none;
+  stroke: url(#goldGrad);
+  stroke-width: 7;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.35s ease;
+  filter: drop-shadow(0 0 10px var(--gold-vibrant));
+}
+
+.jap-bead-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: auto;
+}
+
+.mandala-bead {
+  position: absolute;
+  width: 8.5px;
+  height: 8.5px;
+  border-radius: 50%;
+  background: rgba(255, 209, 102, 0.45);
+  transform: translate(-50%, -50%);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.7);
+  cursor: pointer;
+}
+
+.mandala-bead:hover {
+  transform: translate(-50%, -50%) scale(1.6);
+  background: var(--gold-radiance);
+  box-shadow: 0 0 12px var(--gold-primary);
+  z-index: 10;
+}
+
+.mandala-bead.bead-passed {
+  background: var(--peacock-teal);
+  box-shadow: 0 0 8px var(--peacock-teal);
+}
+
+.mandala-bead.bead-current {
+  width: 15px;
+  height: 15px;
+  background: #ffffff;
+  border: 2px solid var(--gold-primary);
+  box-shadow: 0 0 16px var(--gold-vibrant), 0 0 25px #ffffff;
+  z-index: 8;
+  animation: currentBeadGlow 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes currentBeadGlow {
+  0% { transform: translate(-50%, -50%) scale(1.05); box-shadow: 0 0 10px var(--gold-vibrant); }
+  100% { transform: translate(-50%, -50%) scale(1.35); box-shadow: 0 0 20px #ffffff, 0 0 30px var(--gold-primary); }
+}
+
+.mandala-bead.bead-sumeru {
+  border: 1.5px solid var(--gold-radiance);
+}
+
+/* Center Altar Content */
+.jap-center-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.jap-center-avatar-ring {
+  width: 175px;
+  height: 175px;
+  border-radius: 50%;
+  border: 2.5px solid var(--gold-primary);
+  box-shadow: 0 0 30px rgba(255, 183, 3, 0.55), inset 0 0 25px rgba(0, 0, 0, 0.85);
+  overflow: hidden;
+  position: relative;
+  background: radial-gradient(circle, #0e1e38 0%, #030712 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: avatarAuraGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes avatarAuraGlow {
+  0% {
+    box-shadow: 0 0 25px rgba(255, 183, 3, 0.45), inset 0 0 20px rgba(0, 0, 0, 0.85);
+    border-color: rgba(255, 209, 102, 0.7);
+  }
+  100% {
+    box-shadow: 0 0 45px rgba(255, 209, 102, 0.8), 0 0 70px rgba(6, 214, 160, 0.4), inset 0 0 20px rgba(0, 0, 0, 0.85);
+    border-color: var(--gold-primary);
+  }
+}
+
+.jap-center-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  transform: scale(1.05);
+  filter: contrast(1.06) brightness(1.03);
+}
+
+.jap-center-halo-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 50%, transparent 50%, rgba(3, 7, 18, 0.4) 85%, rgba(3, 7, 18, 0.9) 100%);
+  pointer-events: none;
+}
+
+.jap-counter-pill {
+  position: absolute;
+  bottom: -14px;
+  background: rgba(3, 12, 30, 0.94);
+  border: 1.5px solid var(--gold-primary);
+  border-radius: 20px;
+  padding: 4px 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.8), 0 0 15px var(--gold-shadow);
+  backdrop-filter: blur(8px);
+}
+
+.jap-pill-label {
+  font-size: 0.75rem;
+  color: var(--peacock-cyan);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.jap-counter-badge {
+  font-family: var(--font-royal);
+  font-size: 1.15rem;
+  color: var(--gold-radiance);
+  font-weight: 700;
+  text-shadow: 0 0 10px var(--gold-vibrant);
+}
+
+.jap-card-details {
+  background: rgba(3, 12, 30, 0.92);
+  border: 1.5px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 28px 32px;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.jap-card-details.is-chanting {
+  border-color: var(--gold-primary);
+  box-shadow: 0 0 35px rgba(255, 209, 102, 0.35), inset 0 0 25px rgba(255, 183, 3, 0.08);
+}
+
+.jap-mantra-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.jap-mantra-tag {
+  font-size: 0.85rem;
+  color: var(--peacock-cyan);
+  letter-spacing: 1.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.jap-audio-waveform {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.jap-audio-waveform.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.wave-bar {
+  width: 3.5px;
+  height: 16px;
+  background: var(--gold-radiance);
+  border-radius: 2px;
+  display: inline-block;
+  animation: waveAnim 1s ease-in-out infinite;
+}
+
+.wave-bar:nth-child(1) { animation-delay: 0.0s; height: 12px; }
+.wave-bar:nth-child(2) { animation-delay: 0.2s; height: 20px; }
+.wave-bar:nth-child(3) { animation-delay: 0.4s; height: 16px; }
+.wave-bar:nth-child(4) { animation-delay: 0.1s; height: 24px; }
+.wave-bar:nth-child(5) { animation-delay: 0.3s; height: 14px; }
+
+@keyframes waveAnim {
+  0%, 100% { transform: scaleY(0.4); opacity: 0.5; }
+  50% { transform: scaleY(1.3); opacity: 1; background: #ffffff; }
+}
+
+.wave-text {
+  font-size: 0.8rem;
+  color: var(--gold-primary);
+  margin-left: 6px;
+  font-style: italic;
+  letter-spacing: 0.5px;
+}
+
+.jap-sanskrit-mantra {
+  font-family: var(--font-heading);
+  font-size: 2.35rem;
+  color: var(--gold-radiance);
+  text-shadow: 0 0 25px var(--gold-vibrant);
+  margin-bottom: 6px;
+  line-height: 1.3;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.jap-card-details.is-chanting .jap-sanskrit-mantra {
+  transform: scale(1.02);
+  color: #ffffff;
+  text-shadow: 0 0 30px var(--gold-radiance), 0 0 50px var(--gold-primary);
+}
+
+.jap-transliteration {
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--gold-primary);
+  letter-spacing: 0.8px;
+  margin-bottom: 14px;
+  font-family: var(--font-body);
+}
+
+.jap-name-title {
+  font-size: 1.35rem;
+  color: var(--peacock-cyan);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.jap-meaning {
+  font-size: 1.08rem;
+  color: var(--moonlight-silver);
+  line-height: 1.6;
+  margin-bottom: 6px;
+}
+
+.jap-meaning-en {
+  font-size: 0.95rem;
+  color: rgba(224, 231, 255, 0.72);
+  line-height: 1.5;
+  font-style: italic;
+}
+
+.jap-controls-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.jap-toolbar-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 24px;
+  background: rgba(3, 12, 30, 0.75);
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
+  padding: 10px 18px;
+}
+
+.jap-control-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: var(--peacock-cyan);
+}
+
+.jap-control-item label {
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+@media (max-width: 920px) {
+  .jap-controls-bar {
+    justify-content: center;
+  }
+  .jap-toolbar-row {
+    justify-content: center;
+  }
+}
+
+/* ==========================================================================
+   6. JANMASHTAMI WISH CARD GENERATOR (PANORAMIC WIDESCREEN STUDIO)
+   ========================================================================== */
+.wish-card-layout {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 48px;
+  align-items: start;
+  text-align: left;
+  width: 100%;
+}
+
+@media (max-width: 960px) {
+  .wish-card-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+.wish-form-container {
+  background: rgba(3, 12, 30, 0.65);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 28px 24px;
+}
+
+.wish-form-group {
+  margin-bottom: 18px;
+}
+
+.wish-form-group label {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--peacock-cyan);
+  margin-bottom: 6px;
+}
+
+.wish-input, .wish-select, .wish-textarea {
+  width: 100%;
+  background: rgba(3, 12, 30, 0.85);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 12px 16px;
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.wish-input:focus, .wish-select:focus, .wish-textarea:focus {
+  border-color: var(--gold-primary);
+  box-shadow: 0 0 15px rgba(255, 209, 102, 0.4);
+}
+
+.preset-pills-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.btn-wish-preset {
+  background: rgba(255, 209, 102, 0.1);
+  border: 1px solid rgba(255, 209, 102, 0.3);
+  color: var(--gold-radiance);
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  border-radius: 15px;
+  transition: all 0.2s ease;
+}
+
+.btn-wish-preset:hover {
+  background: rgba(255, 209, 102, 0.25);
+  border-color: var(--gold-primary);
+}
+
+.card-canvas-preview-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#wishCardCanvas {
+  max-width: 480px;
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  border: 2px solid var(--gold-primary);
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.9), 0 0 35px var(--gold-shadow);
+}
+
+.wish-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 20px;
+  width: 100%;
+}
+
+/* ==========================================================================
+   FLOATING DOCK & CONTROLS
+   ========================================================================== */
+.floating-dock-container {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 500;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+}
+
+.dock-action-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(11, 29, 58, 0.85);
+  border: 1px solid var(--gold-primary);
+  color: var(--gold-primary);
+  font-size: 1.35rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7), 0 0 15px var(--gold-shadow);
+  backdrop-filter: blur(10px);
+  transition: all 0.25s var(--ease-divine);
+}
+
+.dock-action-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 10px 30px var(--gold-vibrant);
+}
+
+.quick-nav-dock {
+  background: rgba(6, 17, 38, 0.95);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(16px);
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transform: translateY(20px);
+  transition: all 0.3s var(--ease-divine);
+}
+
+.quick-nav-dock.nav-dock-open {
+  max-height: 500px;
+  opacity: 1;
+  transform: translateY(0);
+  padding: 14px;
+}
+
+.nav-dock-item {
+  color: var(--moonlight-silver);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.nav-dock-item:hover {
+  background: rgba(255, 209, 102, 0.15);
+  color: var(--gold-primary);
+  transform: translateX(-4px);
+}
+
+/* ==========================================================================
+   MODALS
+   ========================================================================== */
+.divine-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.82);
+  backdrop-filter: blur(10px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.divine-modal-backdrop.modal-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.divine-modal-card {
+  background: var(--bg-midnight-indigo);
+  border: 2px solid var(--gold-primary);
+  border-radius: 24px;
+  padding: 32px 28px;
+  width: 100%;
+  max-width: 520px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9), 0 0 50px var(--gold-shadow);
+  text-align: center;
+  position: relative;
+}
+
+.slider-group {
+  margin: 16px 0;
+  text-align: left;
+}
+
+.slider-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+  color: var(--peacock-cyan);
+}
+
+.divine-range {
+  width: 100%;
+  accent-color: var(--gold-primary);
+}
+
+/* ==========================================================================
+   FINAL SCREEN & FOOTER
+   ========================================================================== */
+.final-blessing-section {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.final-quote {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  color: #ffffff;
+  text-shadow: 0 0 25px var(--gold-primary);
+  margin-bottom: 20px;
+}
+
+.final-jaikara {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  color: var(--lotus-pink);
+  margin-bottom: 30px;
+}
+
+.site-footer {
+  margin-top: 40px;
+  font-size: 0.9rem;
+  color: rgba(226, 234, 252, 0.6);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ==========================================================================
+   RESPONSIVE MOBILE-FIRST (9:16 Optimized)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .main-divine-title {
+    font-size: 1.85rem;
+  }
+  .opening-title {
+    font-size: 2.1rem;
+  }
+  .count-unit {
+    min-width: 70px;
+    padding: 12px 10px;
+  }
+  .count-num {
+    font-size: 2.1rem;
+  }
+  .count-colon {
+    font-size: 2rem;
+  }
+  .krishna-sitting-stage {
+    height: 320px;
+  }
+  .jap-sanskrit-mantra {
+    font-size: 1.45rem;
+  }
+  .floating-dock-container {
+    bottom: 16px;
+    right: 16px;
+  }
+  .glass-panel {
+    padding: 24px 16px;
+  }
+}
+
+/* Touch-friendly adjustments */
+@media (pointer: coarse) and (hover: none) {
+  body.touch-active #peacockCursor {
+    opacity: 0 !important;
+  }
+}
+

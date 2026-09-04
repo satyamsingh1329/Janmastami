@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="hi" class="countdown-locked">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>🌙 श्री कृष्ण जन्माष्टमी | Midnight Vrindavan — The Divine Experience</title>
+
+  <meta name="description"
+    content="श्री कृष्ण जन्माष्टमी की अलौकिक एवं आध्यात्मिक डिजिटल अनुभूति — मध्यरात्रि वृन्दावन, दिव्य प्राकट्य, 108 नाम जाप, मंदिर घंटी, दही-हांडी खेल एवं शुभकामना कार्ड।">
+  <meta name="keywords"
+    content="Krishna Janmashtami, Shri Krishna, Vrindavan, 108 Names of Krishna, Dahi Handi, Janmashtami Wishes, Radhe Radhe">
+  <meta name="theme-color" content="#030712">
+
+  <!-- OpenGraph Metadata -->
+  <meta property="og:title" content="🌙 श्री कृष्ण जन्माष्टमी | Midnight Vrindavan — The Divine Experience">
+  <meta property="og:description"
+    content="अनुभव करें वृन्दावन की पावन मध्यरात्रि और भगवान श्री कृष्ण का दिव्य प्राकट्य।">
+  <meta property="og:image" content="images/krishna-sitting.jpg">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon / Touch Icon -->
+  <link rel="icon" type="image/svg+xml" href="images/peacock-feather.svg">
+
+  <!-- Master Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="countdown-locked">
+
+  <!-- ==========================================
+       CANVAS & CINEMATIC ATMOSPHERE LAYERS
+       ========================================== -->
+  <canvas id="bgCanvas" aria-hidden="true"></canvas>
+  <canvas id="fgCanvas" aria-hidden="true"></canvas>
+  <canvas id="lightningCanvas" aria-hidden="true"></canvas>
+  <div id="cinematicFlashOverlay" aria-hidden="true"></div>
+
+  <!-- ==========================================
+       1. OPENING SCREEN (Complete Darkness & Suspense)
+       ========================================== -->
+  <section id="openingScreen" aria-label="अनुभव प्रवेश">
+    <div class="opening-moon-halo">
+      <img src="images/little-bal-gopal.jpg" alt="Bal Gopal" class="opening-bal-gopal-img">
+    </div>
+    <span class="sub-divine-tag">॥ ॐ नमो भगवते वासुदेवाय ॥</span>
+    <h1 class="opening-title">श्री कृष्ण जन्माष्टमी</h1>
+    <p class="opening-subtitle">उस पावन क्षण की प्रतीक्षा करें...</p>
+    <button id="btnEnterExperience" class="btn-divine">
+      ✨ दिव्य अनुभव में प्रवेश करें
+    </button>
+  </section>
+
+  <!-- ==========================================
+       EXPERIENCE WRAPPER
+       ========================================== -->
+  <main class="experience-wrapper">
+
+    <!-- ==========================================
+         COUNTDOWN SECTION (LOCKED VIEWPORT BEFORE MIDNIGHT)
+         ========================================== -->
+    <section id="midnightCountdownSection" class="cinematic-section" aria-labelledby="countdownHeading">
+      <div class="glass-panel">
+        <div class="ornate-title-group">
+          <span class="sub-divine-tag">रोहिणी नक्षत्र • अष्टमी तिथि</span>
+          <h2 id="countdownHeading" class="main-divine-title">पावन मध्यरात्रि काउंटडाउन</h2>
+          <div class="title-ornament-divider">🦚</div>
+        </div>
+
+        <p id="countdownStatus">
+          <span>वर्तमान समय (मध्यरात्रि 12:00 बजे दिव्य प्राकट्य)</span>
+        </p>
+
+        <!-- Large Glowing Digits -->
+        <div class="countdown-box" aria-live="polite">
+          <div class="count-unit">
+            <span id="countHours" class="count-num">11</span>
+            <span class="count-label">घंटे (Hours)</span>
+          </div>
+          <span class="count-colon">:</span>
+          <div class="count-unit">
+            <span id="countMinutes" class="count-num">59</span>
+            <span class="count-label">मिनट (Mins)</span>
+          </div>
+          <span class="count-colon">:</span>
+          <div class="count-unit">
+            <span id="countSeconds" class="count-num">50</span>
+            <span class="count-label">सेकंड (Secs)</span>
+          </div>
+        </div>
+
+        <!-- Testing / Demo Fast-Forward Mode -->
+        <div class="countdown-controls">
+          <button id="btnDemo10s" class="btn-secondary">
+            ⚡ टेस्ट मोड (10s काउंटडाउन)
+          </button>
+          <button id="btnInstantMidnight" class="btn-divine">
+            ⚡ तुरंत 12:00 का दिव्य क्षण देखें
+          </button>
+          <button id="btnResetCountdown" class="btn-secondary">
+            🔄 रीसेट
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         EXPERIENCE AFTER MIDNIGHT (UNLOCKED AT 12:00)
+         ========================================== -->
+    <div class="experience-after-midnight">
+
+      <!-- ==========================================
+           2. KRISHNA BIRTH, TEMPLE BELL & CRADLE
+           ========================================== -->
+      <section id="birthCelebrationSection" class="cinematic-section" aria-labelledby="birthHeading">
+        <div class="glass-panel">
+          <div class="ornate-title-group">
+            <span class="sub-divine-tag">आनन्द उत्सव • बाल मुकुन्द</span>
+            <h2 id="birthHeading" class="main-divine-title">श्री कृष्ण का जन्म हो चुका है</h2>
+            <div class="title-ornament-divider">🦚</div>
+          </div>
+
+          <div class="birth-banner-box">
+            "नंद के घर आनंद भयो, जय कन्हैया लाल की!"
+          </div>
+
+          <!-- 2-Column Grand Widescreen Grid for Bell & Jhula -->
+          <div class="birth-celebration-grid">
+            <!-- Left Column: Primary Interactive Temple Bell -->
+            <div class="temple-bell-stage">
+              <div class="bell-hanging-chain"></div>
+
+              <div id="templeBellWrapper" class="temple-bell-interactive" role="button" tabindex="0"
+                aria-label="मंदिर की घंटी बजाएं">
+                <svg viewBox="0 0 140 160" width="140" height="160">
+                  <defs>
+                    <linearGradient id="brassGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                      <stop offset="0%" stop-color="#b07d38" />
+                      <stop offset="25%" stop-color="#ffd166" />
+                      <stop offset="60%" stop-color="#ffb703" />
+                      <stop offset="90%" stop-color="#b07d38" />
+                      <stop offset="100%" stop-color="#734914" />
+                    </linearGradient>
+                    <radialGradient id="rimGrad" cx="50%" cy="50%" r="50%">
+                      <stop offset="0%" stop-color="#ffe8a1" />
+                      <stop offset="80%" stop-color="#d49b28" />
+                      <stop offset="100%" stop-color="#543306" />
+                    </radialGradient>
+                  </defs>
+
+                  <circle cx="70" cy="16" r="12" fill="none" stroke="url(#brassGrad)" stroke-width="5" />
+                  <rect x="62" y="24" width="16" height="14" rx="3" fill="url(#brassGrad)" />
+                  <path
+                    d="M 45,38 Q 70,32 95,38 Q 102,80 120,118 Q 124,130 115,134 Q 70,140 25,134 Q 16,130 20,118 Q 38,80 45,38 Z"
+                    fill="url(#brassGrad)" filter="drop-shadow(0 8px 16px rgba(0,0,0,0.6))" />
+                  <path d="M 36,95 Q 70,102 104,95" stroke="#734914" stroke-width="2" fill="none" />
+                  <path d="M 30,112 Q 70,120 110,112" stroke="#ffe8a1" stroke-width="2.5" fill="none" />
+                  <ellipse cx="70" cy="132" rx="46" ry="10" fill="url(#rimGrad)" />
+                </svg>
+
+                <div id="templeBellClapper" class="bell-clapper"></div>
+                <div id="bellRipplesContainer"></div>
+              </div>
+
+              <div style="margin-top: 10px; font-weight: 600; color: var(--gold-primary);">
+                घंटी वादन: <span id="bellRingCounter">0 बार</span>
+              </div>
+
+              <div class="countdown-controls" style="margin-top: 12px;">
+                <button id="btnRingTempleBell" class="btn-divine">
+                  🔔 घंटी बजाएँ (Ring Bell)
+                </button>
+                <button id="btnToggleAutoBell" class="btn-secondary">
+                  🔔 स्वतः घंटी: सक्रिय (ON)
+                </button>
+              </div>
+            </div>
+
+            <!-- Right Column: Interactive Bal Gopal Jhula / Cradle -->
+            <div class="jhula-stage-container">
+              <div id="balGopalJhula" class="jhula-hanging-frame" role="button" tabindex="0"
+                aria-label="बाल गोपाल का पालना झुलाएं">
+                <svg class="jhula-ropes" viewBox="0 0 270 270">
+                  <line x1="45" y1="0" x2="70" y2="180" stroke="#ffd166" stroke-width="3" />
+                  <line x1="225" y1="0" x2="200" y2="180" stroke="#ffd166" stroke-width="3" />
+                  <path d="M 70,180 Q 135,205 200,180" stroke="#ffb703" stroke-width="4" fill="none" />
+                </svg>
+                <div class="jhula-cradle">
+                  <img src="images/little-bal-gopal.jpg" alt="Baby Krishna in Cradle">
+                </div>
+              </div>
+
+              <div class="countdown-controls" style="margin-top: 18px;">
+                <button id="btnSwingJhula" class="btn-divine">
+                  🌸 कान्हा को झुलाएँ 🦚 (Swing Cradle)
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Blessing Message Banner -->
+          <div
+            style="margin-top: 24px; padding: 18px; background: rgba(3, 12, 30, 0.7); border-radius: 16px; border: 1px solid var(--glass-border);">
+            <h3
+              style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--gold-radiance); margin-bottom: 6px;">
+              श्री कृष्ण जन्माष्टमी की हार्दिक शुभकामनाएँ
+            </h3>
+            <p style="font-size: 1.05rem; color: var(--moonlight-silver);">
+              "कान्हा की कृपा आपके जीवन में प्रेम, शांति, सुख और समृद्धि का प्रकाश सदा बनाए रखे।"
+            </p>
+          </div>
+
+          <!-- ==========================================
+               DEVOTIONAL GATE LOCK (1 BELL + 1 JHULA COMPULSORY)
+               ========================================== -->
+          <div id="darshanGateLockCard" class="darshan-gate-lock-card">
+            <div class="gate-card-header">
+              <span class="gate-lock-icon">🔒</span>
+              <h3 class="gate-card-title">आगे के दिव्य दर्शन हेतु पावन संकल्प</h3>
+            </div>
+            
+            <p class="gate-card-desc">
+              भगवान श्री कृष्ण के दिव्य संदेश, 108 नाम जाप एवं दही-हांडी लीलाओं के दर्शन के लिए <strong>कम से कम 1 बार मंदिर की घंटी बजाएं</strong> एवं <strong>1 बार कान्हा का पालना झुलाएं</strong>।
+            </p>
+
+            <div class="gate-tasks-container">
+              <div id="gateTaskBell" class="gate-task-card task-pending">
+                <div class="task-icon-wrap">🔔</div>
+                <div class="task-info">
+                  <div class="task-title">मंदिर की पावन घंटी बजाएं</div>
+                  <div class="task-subtitle">ऊपर घंटी पर क्लिक करें या बटन दबाएं</div>
+                </div>
+                <div id="gateBadgeBell" class="task-status-badge badge-pending">
+                  0 / 1 (बाकी)
+                </div>
+              </div>
+
+              <div id="gateTaskJhula" class="gate-task-card task-pending">
+                <div class="task-icon-wrap">🌸</div>
+                <div class="task-info">
+                  <div class="task-title">कान्हा का पालना झुलाएं</div>
+                  <div class="task-subtitle">पालने पर क्लिक करें या झुलाएं बटन दबाएं</div>
+                </div>
+                <div id="gateBadgeJhula" class="task-status-badge badge-pending">
+                  0 / 1 (बाकी)
+                </div>
+              </div>
+            </div>
+
+            <div id="darshanUnlockedNotice" class="darshan-unlocked-notice" style="display: none;">
+              <div class="unlocked-msg">
+                ✨ जय श्री कृष्ण! दोनों संकल्प पूर्ण हुए — आगे के दिव्य दर्शन का मार्ग खुल गया है! ✨
+              </div>
+              <button id="btnProceedToDarshan" class="btn-divine pulse" style="margin-top: 14px; font-size: 1.15rem; padding: 12px 30px;">
+                👇 आगे बढ़ें (Explore All Darshan)
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ==========================================
+           SUBSEQUENT DARSHAN SECTIONS (LOCKED UNTIL 1 BELL + 1 JHULA)
+           ========================================== -->
+      <div id="subsequentDarshanSections" class="subsequent-darshan-sections darshan-locked">
+      <section id="krishnaDarshanSection" class="cinematic-section" aria-labelledby="messageHeading">
+        <div class="glass-panel">
+          <div class="ornate-title-group">
+            <span class="sub-divine-tag">सच्चा कर्म • अटूट विश्वास • दिव्य मार्गदर्शन</span>
+            <h2 id="messageHeading" class="main-divine-title">भगवान श्रीकृष्ण का संदेश आपके लिए</h2>
+            <div class="title-ornament-divider">🦚</div>
+          </div>
+
+          <div class="krishna-speaking-container">
+            <!-- Sitting Krishna Clean Divine Stage -->
+            <div id="krishnaSittingVisual" class="krishna-sitting-stage">
+              <img src="images/krishna-sitting.jpg" alt="Bhagwan Shri Krishna Sitting in Vrindavan"
+                class="krishna-sitting-bg">
+            </div>
+
+            <!-- Start Message Interaction Button -->
+            <div style="text-align: center;">
+              <button id="btnStartKrishnaMessage" class="btn-divine" style="font-size: 1.25rem; padding: 16px 36px;">
+                ✨ कान्हा का संदेश सुनें (Listen to Message)
+              </button>
+            </div>
+
+            <!-- Hindi Sacred Message Card (Revealed on Click) -->
+            <div id="krishnaMessageContentCard" class="glass-panel"
+              style="display: none; width: 100%; max-width: 100%;">
+              <div id="krishnaMessageDisplay" class="krishna-message-box" role="region" aria-live="polite">
+                <p class="hindi-msg-line">
+                  <span class="line-bullet">🦚</span>
+                  "हे मेरे प्रिय, इस पावन रात्रि में तुम्हारा यहाँ आना कोई संयोग नहीं है..."
+                </p>
+              </div>
+
+              <!-- Message Controls Bar (Clean 1.0x Playback) -->
+              <div class="message-action-bar">
+                <button id="btnPlayMessage" class="btn-divine" style="display: none;">
+                  ▶ संदेश सुनें (Play)
+                </button>
+                <button id="btnPauseMessage" class="btn-secondary">
+                  ⏸ विराम (Pause)
+                </button>
+                <button id="btnReplayMessage" class="btn-secondary" style="display: none;">
+                  🔄 पुनः सुनें (Replay)
+                </button>
+                <button id="btnToggleVoice" class="btn-secondary">
+                  🗣️ वाणी: चालू
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           4. DAHI-HANDI INTERACTIVE MINI-GAME
+           ========================================== -->
+      <section id="dahiHandiSection" class="cinematic-section" aria-labelledby="dahiHeading">
+        <div class="glass-panel">
+          <div class="ornate-title-group">
+            <span class="sub-divine-tag">गोविंदा आला रे • बाललीला</span>
+            <h2 id="dahiHeading" class="main-divine-title">माखन मिश्री दही-हांडी</h2>
+            <div class="title-ornament-divider">🍯</div>
+          </div>
+
+          <div class="dahi-game-container">
+            <div class="dahi-stats-bar">
+              <div class="dahi-stat-item">अंक (Score): <b id="dahiScore">0</b></div>
+              <div class="dahi-stat-item">सर्वोच्च (High): <b id="dahiHighScore">0</b></div>
+              <div class="dahi-stat-item">समय (Timer): <b id="dahiTimer">25s</b></div>
+            </div>
+
+            <p id="dahiStatusMsg" style="margin-bottom: 12px; font-size: 0.95rem;">
+              🎯 सही समय पर <b>TAP</b> करें और कान्हा को हांडी तक पहुँचाएँ!
+            </p>
+
+            <canvas id="dahiHandiCanvas" width="400" height="460" aria-label="दही हांडी खेल कैनवास"></canvas>
+
+            <div class="dahi-controls">
+              <button id="btnStartDahiHandi" class="btn-divine">
+                🎮 खेल शुरू करें (Start)
+              </button>
+              <button id="btnJumpKanha" class="btn-divine"
+                style="display: none; font-size: 1.25rem; padding: 16px 36px;">
+                🦘 छलांग लगाएँ (JUMP)
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           5. 108 SACRED NAMES OF SHRI KRISHNA (JAP MALA)
+           ========================================== -->
+      <section id="jap108Section" class="cinematic-section" aria-labelledby="japHeading">
+        <div class="glass-panel">
+          <div class="ornate-title-group">
+            <span class="sub-divine-tag">अष्टोत्तर शतनामावली • जप माला</span>
+            <h2 id="japHeading" class="main-divine-title">श्री कृष्ण के 108 पावन नाम</h2>
+            <div class="title-ornament-divider">🦚</div>
+          </div>
+
+          <div class="jap-stage-grid">
+            <div class="jap-mandala-col">
+              <div class="jap-mandala-wrapper">
+                <svg class="jap-svg-container" viewBox="0 0 340 340">
+                  <defs>
+                    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stop-color="#ffd166" />
+                      <stop offset="50%" stop-color="#ffb703" />
+                      <stop offset="100%" stop-color="#06d6a0" />
+                    </linearGradient>
+                  </defs>
+                  <circle class="jap-circle-bg" cx="170" cy="170" r="142" />
+                  <circle id="japProgressCircle" class="jap-circle-progress" cx="170" cy="170" r="142"
+                    stroke-dasharray="892.2" stroke-dashoffset="892.2" transform="rotate(-90 170 170)" />
+                </svg>
+
+                <div id="japBeadRing" class="jap-bead-ring"></div>
+
+                <!-- Divine Center Altar with Sacred Krishna Portrait & Counter Badge -->
+                <div class="jap-center-content">
+                  <div class="jap-center-avatar-ring">
+                    <img src="images/krishna-sitting.jpg" alt="Shri Krishna" class="jap-center-avatar-img">
+                    <div class="jap-center-halo-overlay"></div>
+                  </div>
+                  
+                  <div class="jap-counter-pill">
+                    <span class="jap-pill-label">जाप संख्या</span>
+                    <span id="japCounterNumber" class="jap-counter-badge">1 / 108</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="jap-info-col">
+              <div class="jap-card-details">
+                <div class="jap-mantra-header">
+                  <span class="jap-mantra-tag">॥ श्री कृष्ण अष्टोत्तर शतनाम ॥</span>
+                  <div id="japAudioWave" class="jap-audio-waveform" aria-hidden="true">
+                    <span class="wave-bar"></span>
+                    <span class="wave-bar"></span>
+                    <span class="wave-bar"></span>
+                    <span class="wave-bar"></span>
+                    <span class="wave-bar"></span>
+                    <span class="wave-text">दिव्य नाम जाप प्रवाह...</span>
+                  </div>
+                </div>
+
+                <div id="japMantraDisplay" class="jap-sanskrit-mantra">ॐ कृष्णाय नमः</div>
+                <div id="japTransliteration" class="jap-transliteration">Om Krishnaya Namah</div>
+
+                <div class="jap-name-title">
+                  <span id="japNameHindi">कृष्ण</span> (<span id="japNameEnglish">Krishna</span>)
+                </div>
+                <div id="japMeaningHindi" class="jap-meaning">सर्व-आकर्षक, जो सभी को अपनी ओर आकर्षित करते हैं</div>
+                <div id="japMeaningEnglish" class="jap-meaning-en">
+                  The All-Attractive Supreme Lord
+                </div>
+              </div>
+
+              <div class="jap-controls-bar">
+                <button id="btnJapPlay" class="btn-divine" style="font-size: 1.15rem; padding: 12px 28px;">
+                  🙏 नाम जाप शुरू करें (Start Jap)
+                </button>
+                <button id="btnJapPause" class="btn-secondary" style="display: none; font-size: 1.15rem; padding: 12px 24px;">
+                  ⏸ रोकें (Pause)
+                </button>
+                <button id="btnJapPrev" class="btn-secondary" title="पिछला नाम (Previous)">
+                  ⏮ पिछला
+                </button>
+                <button id="btnJapNext" class="btn-secondary" title="अगला नाम (Next)">
+                  अगला ⏭
+                </button>
+                <button id="btnJapReset" class="btn-secondary" title="पुनः प्रारंभ (Restart)">
+                  🔄 रीसेट
+                </button>
+              </div>
+
+              <!-- Audio & Pacing Toolbar -->
+              <div class="jap-toolbar-row">
+                <div class="jap-control-item">
+                  <label for="sliderJapVolume">🔊 वाणी स्तर:</label>
+                  <input type="range" id="sliderJapVolume" class="divine-range" min="0" max="1" step="0.05" value="0.9" style="width: 100px;">
+                  <span id="japVolVal" style="font-size: 0.85rem; color: var(--gold-primary); min-width: 32px;">90%</span>
+                </div>
+
+                <div class="jap-control-item">
+                  <label for="japSpeedSelect">⚙️ जाप गति:</label>
+                  <select id="japSpeedSelect" class="wish-select" style="width: auto; padding: 5px 12px; font-size: 0.88rem;">
+                    <option value="slow" selected>🕊️ शांत एवं ध्यानमय (Peaceful - Slow)</option>
+                    <option value="medium">🌸 मध्यम गति (Devotional - Medium)</option>
+                    <option value="steady">📿 निरंतर प्रवाह (Continuous)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           6. JANMASHTAMI WISH CARD GENERATOR
+           ========================================== -->
+      <section id="wishCardSection" class="cinematic-section" aria-labelledby="wishHeading">
+        <div class="glass-panel">
+          <div class="ornate-title-group">
+            <span class="sub-divine-tag">डिजिटल शुभकामना पत्र • 100% Frontend</span>
+            <h2 id="wishHeading" class="main-divine-title">अपनी विशेष शुभकामना भेजें</h2>
+            <div class="title-ornament-divider">✨</div>
+          </div>
+
+          <div class="wish-card-layout">
+            <div class="wish-form-container">
+              <div class="wish-form-group">
+                <label for="wishName">आपका शुभ नाम (Your Name) *</label>
+                <input type="text" id="wishName" class="wish-input" placeholder="उदा. राहुल शर्मा" value="सत्यम">
+              </div>
+
+              <div class="wish-form-group">
+                <label for="wishFamily">परिवार का नाम (Family Name - Optional)</label>
+                <input type="text" id="wishFamily" class="wish-input" placeholder="उदा. शर्मा" value="शर्मा">
+              </div>
+
+              <div class="wish-form-group">
+                <label for="wishCity">शहर / स्थान (City - Optional)</label>
+                <input type="text" id="wishCity" class="wish-input" placeholder="उदा. वृन्दावन / दिल्ली"
+                  value="वृन्दावन">
+              </div>
+
+              <div class="wish-form-group">
+                <label for="wishTheme">कार्ड का दिव्य स्वरूप (Theme)</label>
+                <select id="wishTheme" class="wish-select">
+                  <option value="vrindavan">🌙 मध्यरात्रि वृन्दावन (Midnight Vrindavan)</option>
+                  <option value="gold">👑 स्वर्णिम गोकुल (Golden Gokul)</option>
+                  <option value="peacock">🦚 मयूर पंख (Peacock Emerald)</option>
+                  <option value="yamuna">🌊 पवित्र यमुना (Mystic Yamuna)</option>
+                </select>
+              </div>
+
+              <div class="wish-form-group">
+                <label for="wishMessage">आपकी विशेष शुभकामना संदेश (Wish Message)</label>
+                <textarea id="wishMessage" class="wish-textarea"
+                  rows="3">भगवान श्री कृष्ण आपके जीवन में सुख, शांति, समृद्धि और अपार आनंद का संचार करें!</textarea>
+
+                <div class="preset-pills-bar">
+                  <button type="button" class="btn-wish-preset"
+                    data-preset="भगवान श्री कृष्ण आपके जीवन में सुख, शांति, समृद्धि और अपार आनंद का संचार करें!">✨
+                    सुख-समृद्धि</button>
+                  <button type="button" class="btn-wish-preset"
+                    data-preset="माखन-मिश्री का भोग, कान्हा का प्यार, मुबारक हो आपको जन्माष्टमी का पावन त्यौहार!">🍯
+                    माखन-मिश्री</button>
+                  <button type="button" class="btn-wish-preset"
+                    data-preset="राधा की भक्ति, मुरली की मिठास, कान्हा के प्रेम से महके आपका हर विश्वास!">🌸 राधा-कृष्ण
+                    प्रेम</button>
+                </div>
+              </div>
+
+              <button id="btnGenerateWish" class="btn-divine" style="width: 100%; margin-top: 10px;">
+                ✨ Wish Card बनाएं (Generate Live)
+              </button>
+            </div>
+
+            <div id="wishCardPreviewSection" class="card-canvas-preview-container">
+              <canvas id="wishCardCanvas" width="800" height="1050"
+                aria-label="जन्माष्टमी शुभकामना कार्ड कैनवास"></canvas>
+
+              <div class="wish-card-actions">
+                <button id="btnDownloadCard" class="btn-divine">
+                  📥 कार्ड डाउनलोड करें (Download PNG)
+                </button>
+                <button id="btnShareCard" class="btn-secondary">
+                  📲 शेयर करें (Share)
+                </button>
+                <button id="btnCopyWishText" class="btn-secondary">
+                  📋 शुभकामना कॉपी करें (Copy Text)
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================
+           7. FINAL BLESSING & REPLAY SECTION
+           ========================================== -->
+      <section class="final-blessing-section" aria-label="अंतिम आशीर्वाद">
+        <h2 class="final-quote">"आपका जीवन प्रेम, शांति और विश्वास से भरा रहे।"</h2>
+        <div class="final-jaikara">
+          <span>राधे राधे ❤️ जय श्री कृष्ण</span>
+        </div>
+
+        <button id="btnResetWholeExperience" class="btn-divine">
+          🔄 पुनः अनुभव करें (Restart Journey)
+        </button>
+
+        <footer class="site-footer">
+          <p>🦚 श्री कृष्ण जन्माष्टमी डिजिटल अनुभव • 100% Frontend Cinematic Web App 🦚</p>
+        </footer>
+      </section>
+
+      </div><!-- End subsequentDarshanSections -->
+    </div><!-- End experience-after-midnight -->
+
+  </main>
+
+  <!-- ==========================================
+       FLOATING QUICK NAVIGATION & AUDIO DOCK
+       ========================================== -->
+  <aside class="floating-dock-container" aria-label="नेविगेशन एवं ध्वनि नियंत्रण">
+    <nav id="quickNavDock" class="quick-nav-dock" aria-label="त्वरित नेविगेशन">
+      <a href="#midnightCountdownSection" class="nav-dock-item">⏳ काउंटडाउन</a>
+      <a href="#birthCelebrationSection" class="nav-dock-item">🌸 श्री कृष्ण जन्म एवं पालना</a>
+      <a href="#krishnaDarshanSection" class="nav-dock-item">🦚 भगवान श्रीकृष्ण का संदेश</a>
+      <a href="#dahiHandiSection" class="nav-dock-item">🍯 दही-हांडी खेल</a>
+      <a href="#jap108Section" class="nav-dock-item">📿 108 नाम जाप</a>
+      <a href="#wishCardSection" class="nav-dock-item">✨ शुभकामना कार्ड</a>
+    </nav>
+
+    <button id="btnNavDockToggle" class="dock-action-btn" title="त्वरित सूची (Quick Nav)"
+      aria-label="नेविगेशन मेनू खोलें">
+      🧭
+    </button>
+    <button id="btnMasterSoundToggle" class="dock-action-btn" title="ध्वनि म्यूट/अनम्यूट"
+      aria-label="ध्वनि चालू या बंद करें">
+      🔊
+    </button>
+    <button id="btnOpenSoundSettings" class="dock-action-btn" title="ध्वनि मिक्सर सेटिंग"
+      aria-label="ध्वनि स्तर समायोजित करें">
+      🎛️
+    </button>
+  </aside>
+
+  <!-- ==========================================
+       MODALS
+       ========================================== -->
+  <div id="audioSettingsModal" class="divine-modal-backdrop" role="dialog" aria-modal="true"
+    aria-labelledby="audioModalHeading">
+    <div class="divine-modal-card">
+      <h3 id="audioModalHeading" class="main-divine-title" style="font-size: 1.8rem; margin-bottom: 20px;">
+        🎛️ दिव्य ध्वनि मिक्सर (Audio Mixer)
+      </h3>
+
+      <div class="slider-group">
+        <div class="slider-label"><span>मास्टर वॉल्यूम (Master):</span></div>
+        <input type="range" id="sliderMasterVol" class="divine-range" min="0" max="1" step="0.05" value="0.8">
+      </div>
+
+      <div class="slider-group">
+        <div class="slider-label"><span>🎵 बांसुरी (Bansuri / Flute):</span></div>
+        <input type="range" id="sliderFluteVol" class="divine-range" min="0" max="1" step="0.05" value="0.65">
+      </div>
+
+      <div class="slider-group">
+        <div class="slider-label"><span>🔔 मंदिर घंटी (Temple Bell):</span></div>
+        <input type="range" id="sliderBellVol" class="divine-range" min="0" max="1" step="0.05" value="0.28">
+      </div>
+
+      <div class="slider-group">
+        <div class="slider-label"><span>🌧️ वर्षा (Rain Ambience):</span></div>
+        <input type="range" id="sliderRainVol" class="divine-range" min="0" max="1" step="0.05" value="0.35">
+      </div>
+
+      <div class="slider-group">
+        <div class="slider-label"><span>🦚 मयूर वाणी (Peacock Calls):</span></div>
+        <input type="range" id="sliderPeacockVol" class="divine-range" min="0" max="1" step="0.05" value="0.45">
+      </div>
+
+      <div class="slider-group">
+        <div class="slider-label"><span>🌊 यमुना धारा (River Waves):</span></div>
+        <input type="range" id="sliderRiverVol" class="divine-range" min="0" max="1" step="0.05" value="0.35">
+      </div>
+
+      <button id="btnCloseSoundModal" class="btn-divine" style="margin-top: 20px; width: 100%;">
+        पूर्ण (Done)
+      </button>
+    </div>
+  </div>
+
+  <div id="japCompletionModal" class="divine-modal-backdrop" role="dialog" aria-modal="true"
+    aria-labelledby="japModalHeading">
+    <div class="divine-modal-card">
+      <span class="sub-divine-tag">॥ श्री कृष्णाय नमः ॥</span>
+      <h3 id="japModalHeading" class="main-divine-title"
+        style="font-size: 2.1rem; color: var(--gold-radiance); margin: 12px 0;">
+        ✨ 108 नामों का जाप पूर्ण हुआ ✨
+      </h3>
+      <p style="font-size: 1.18rem; line-height: 1.8; margin-bottom: 24px; color: var(--moonlight-silver);">
+        श्री कृष्ण की कृपा आप और आपके परिवार पर सदा बनी रहे।
+      </p>
+      <div style="font-size: 1.65rem; color: var(--gold-radiance); font-family: var(--font-heading); margin-bottom: 24px; text-shadow: 0 0 15px var(--gold-vibrant);">
+        🌸 राधे राधे 🦚 | जय श्री कृष्ण 🙏 🌸
+      </div>
+      <button id="btnCloseJapCompletion" class="btn-divine" style="width: 100%;">
+        जय श्री कृष्ण (Pranam)
+      </button>
+    </div>
+  </div>
+
+  <div id="dahiCelebrationModal" class="divine-modal-backdrop" role="dialog" aria-modal="true"
+    aria-labelledby="dahiModalHeading">
+    <div class="divine-modal-card">
+      <span class="sub-divine-tag">🏆 अद्भुत विजय • माखन मिश्री प्रसाद</span>
+      <h3 id="dahiModalHeading" class="main-divine-title"
+        style="font-size: 2rem; color: var(--gold-radiance); margin: 12px 0;">
+        🎉 बधाई हो! आपने हांडी फोड़ दी! 🎉
+      </h3>
+      <p style="font-size: 1.15rem; margin-bottom: 20px;">
+        "नंद के घर आनंद भयो, जय कन्हैया लाल की!"
+      </p>
+      <button id="btnCloseDahiCelebration" class="btn-divine" style="width: 100%;">
+        प्रसाद स्वीकार करें ✨
+      </button>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       CUSTOM PEACOCK FEATHER CURSOR (TOPMOST LAYER)
+       ========================================== -->
+  <div id="peacockCursor" aria-hidden="true">
+    <div class="cursor-pointer-dot"></div>
+    <div class="cursor-feather-body">
+      <img src="images/peacock-feather.svg" alt="Peacock Feather">
+    </div>
+  </div>
+
+  <!-- ==========================================
+       JAVASCRIPT SCRIPTS
+       ========================================== -->
+  <script src="data/krishna-108-names.js"></script>
+  <script src="js/audio.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/countdown.js"></script>
+  <script src="js/midnight-transition.js"></script>
+  <script src="js/krishna-reveal.js"></script>
+  <script src="js/jap108.js"></script>
+  <script src="js/temple-bell.js"></script>
+  <script src="js/dahi-handi.js"></script>
+  <script src="js/wish-card.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
